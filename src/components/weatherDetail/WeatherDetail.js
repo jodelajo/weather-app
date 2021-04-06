@@ -1,6 +1,7 @@
 import React from 'react';
 import './WeatherDetail.css';
 
+
 function WeatherDetail() {
   return (
     <section className="day-part">
