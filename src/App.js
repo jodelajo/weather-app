@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useContext} from 'react';
 import SearchBar from './components/searchBar/SearchBar';
 import TabBarMenu from './components/tabBarMenu/TabBarMenu';
 import MetricSlider from './components/metricSlider/MetricSlider';
@@ -7,12 +7,13 @@ import './App.css';
 import axios from 'axios';
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import TodayTab from "./pages/todayTab/TodayTab";
-import kelvinToCelcius from "./helpers/kelvinToCelsius";
+import { TempContext} from "./context/TempProvider";
 
 function App() {
     const [weatherData, setWeatherData] = useState(null);
     const [location, setLocation] = useState('');
     const [error, setError] = useState(false)
+    const { kelvinToMetric } = useContext(TempContext)
 
     useEffect(() => {
         async function fetchData() {
@@ -49,7 +50,7 @@ function App() {
                     <>
                         <h2>{weatherData.weather[0].description}</h2>
                         <h3>{weatherData.name}</h3>
-                        <h1>{kelvinToCelcius(weatherData.main.temp)}</h1>
+                        <h1>{kelvinToMetric(weatherData.main.temp)}</h1>
 
                     </>
                     }
