@@ -19,6 +19,8 @@ function TodayTab( {coordinates}) {
 				setForecasts([result.data.hourly[3],
 					result.data.hourly[5],
 					result.data.hourly[7],])
+				console.log('hi')
+
 			} catch(e) {
 				setError(true)
 				console.error(e)
@@ -41,6 +43,7 @@ function TodayTab( {coordinates}) {
 					type={forecast.weather[0].main}
 					description={forecast.weather[0].description}
 					key={forecast.dt}
+					wind={forecast.wind_speed}
 					/>
 
 				})}

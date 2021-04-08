@@ -3,6 +3,7 @@ import axios from "axios";
 import './Test.css';
 import { TempContext } from "../../context/TempProvider";
 import createDateString from "../../helpers/createDateString";
+import metricToBeaufort from "../../helpers/metricToBeaufort";
 
 function Test (){
     const [weatherData, setWeatherData] = useState(null);
@@ -49,7 +50,7 @@ function Test (){
             {locations &&
             locations.sort((a, b)=> {
                 // const
-                return a.main.temp > b.main.temp && a.clouds.all > b.clouds.all ? 1 : -1;
+                return a.main.temp > b.main.temp  || a.clouds.all > b.clouds.all ? 1 : -1;
             })
                 .map((location) =>{
                     return <article className="forecast-day" key={location.name}>
@@ -64,6 +65,10 @@ function Test (){
                             </span>
                         <span className="weather-description">
                             {location.clouds.all}% bewolkt
+                            </span>
+                        <span className="weather-description">
+                            windkracht
+                            {metricToBeaufort(location.wind.speed)}
                             </span>
                     </section>
                 </article>

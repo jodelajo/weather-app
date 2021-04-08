@@ -3,6 +3,7 @@ import './ForecastTab.css';
 import axios from 'axios';
 import createDateString from "../../helpers/createDateString";
 import { TempContext } from "../../context/TempProvider";
+import metricToBeaufort from "../../helpers/metricToBeaufort";
 
 
 
@@ -54,6 +55,10 @@ function ForecastTab({coordinates}) {
                             </span>
                             <span className="weather-description">
                                 {forecast.weather[0].description}
+                            </span>
+                            <span className="weather-description">
+                            windkracht
+                                {metricToBeaufort(forecast.wind_speed)}
                             </span>
                         </section>
                     </article>

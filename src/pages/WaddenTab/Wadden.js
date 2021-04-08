@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext }from 'react';
 import axios from "axios";
 import './Wadden.css';
 import { TempContext } from "../../context/TempProvider";
-import createDateString from "../../helpers/createDateString";
+import metricToBeaufort from "../../helpers/metricToBeaufort";
 
 function Wadden (){
     const [weatherData, setWeatherData] = useState(null);
@@ -22,7 +22,7 @@ function Wadden (){
                 setWeatherData(result.data);
                 console.log(result.data);
                 setLocations(result.data.list)
-
+                console.log(result.data.list[0].wind.speed)
 
 
 
@@ -41,7 +41,7 @@ function Wadden (){
         <div className="tab-wrapper">
             {locations &&
             locations.sort((a, b)=> {
-                return a.main.temp > b.main.temp && a.clouds.all > b.clouds.all ? 1 : -1;
+                return a.main.temp > b.main.temp && a.clouds.all > b.clouds.all && a.wind.speed < b.wind.speed ? 1 : -1;
             })
                 .map((location) =>{
                 return <article className="forecast-day" key={location.name}>
@@ -60,7 +60,8 @@ function Wadden (){
                             {location.clouds.all}% bewolkt
                             </span>
                         <span className="weather-description">
-                            {location.wind.speed} {location.wind.deg}
+                            windkracht
+                            {metricToBeaufort(location.wind.speed)}
                             </span>
                     </section>
                 </article>
