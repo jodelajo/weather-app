@@ -1,7 +1,6 @@
 import React, {useEffect, useState, useContext} from 'react';
 import './ForecastTab.css';
 import axios from 'axios';
-import kelvinToCelsius from "../../helpers/kelvinToCelsius";
 import createDateString from "../../helpers/createDateString";
 import { TempContext } from "../../context/TempProvider";
 
@@ -45,6 +44,7 @@ function ForecastTab({coordinates}) {
                 return (
                     <article className="forecast-day" key={forecast.dt}>
                         <p className="day-description">
+                            <img src={`https://openweathermap.org/img/wn/${forecast.weather[0].icon}.png`} alt="icon"/>
                             {createDateString(forecast.dt)}
                         </p>
 

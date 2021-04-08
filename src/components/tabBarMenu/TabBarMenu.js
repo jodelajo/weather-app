@@ -16,6 +16,21 @@ function TabBarMenu() {
             Komende week
           </NavLink>
         </li>
+        <li>
+          <NavLink activeClassName="active" to="/wadden">
+            Wadden
+          </NavLink>
+        </li>
+        <li>
+          <NavLink activeClassName="active" to="/zuidoost">
+            Zuid-Oost
+          </NavLink>
+        </li>
+        <li>
+          <NavLink activeClassName="active" to="/test">
+            Test
+          </NavLink>
+        </li>
       </ul>
     </nav>
   );

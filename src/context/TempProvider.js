@@ -18,12 +18,12 @@ function TempContextProvider({ children }) {
     return (
         <TempContext.Provider value={{
             toggleTemp: toggleTemp,
-            kelvinToMetric: selectedMetric === 'celsius' ? kelvinToCelsius : kelvinToFahrenheit,
+            kelvinToMetric: selectedMetric === 'celsius' ? kelvinToFahrenheit : kelvinToCelsius,
         }}
         >
             { children }
         </TempContext.Provider>
     )
-}
+};
 
 export default TempContextProvider;
